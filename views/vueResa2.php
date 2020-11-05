@@ -39,7 +39,7 @@
                                 foreach($dataFilms as $rowFilm){
                                     ?>
                                     <tr>
-                                        <td> <a href="VCIResa3.php?filmchoisi=<?= $rowFilm['ID_FILM'] ;?>&libfilmchoisi=<?= urlencode($rowFilm['TITRE_FILM']) ;?>&anfilmchoisi=<?= $rowFilm['ANNEE_FILM'] ; ?>&reafilmchoisi=<?= urlencode($rowFilm['PRENOM_STAR'] . ' ' . $rowFilm['NOM_STAR']);?>&affiche=<?= urlencode($rowFilm['REF_IMAGE']) ; ?>"><?= $rowFilm['TITRE_FILM'] ; ?> </a></td>
+                                        <td> <a href="?action=resa3&filmchoisi=<?= $rowFilm['ID_FILM'] ;?>&libfilmchoisi=<?= urlencode($rowFilm['TITRE_FILM']) ;?>&anfilmchoisi=<?= $rowFilm['ANNEE_FILM'] ; ?>&reafilmchoisi=<?= urlencode($rowFilm['PRENOM_STAR'] . ' ' . $rowFilm['NOM_STAR']);?>&affiche=<?= urlencode($rowFilm['REF_IMAGE']) ; ?>"><?= $rowFilm['TITRE_FILM'] ; ?> </a></td>
                                         <td> <?= $rowFilm['ANNEE_FILM'] ; ?></td>
                                         <td> <?= $rowFilm['NOM_STAR'] ; ?></td>
                                         <td> <?= $rowFilm['PRENOM_STAR'] ; ?></td>

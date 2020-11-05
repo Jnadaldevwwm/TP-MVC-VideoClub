@@ -30,7 +30,7 @@
         </script>
         <table >
             <tr>
-            <td><a href=""><img src="public/images/VCLogo.gif" border="0"/></a></td>
+            <td><a href="?action=accueil"><img src="public/images/VCLogo.gif" border="0"/></a></td>
             <td class="centrer">
                     <div class="titrevideo">Vidéo-Club</div>
                     <div class="soustitrevideo">... et si on se faisait une toile, à la maison ?</div>
@@ -39,7 +39,8 @@
             </tr>
         </table>
         <div id="divLogin" class="divCache" >
-            <form name="frmlogin" action="VCILogAdmin.php" method="post">
+            <form name="frmlogin" action="" method="post">
+                <input type="hidden" name="action" value="admin">
                 <p>Login : <input type ="text" name="login" /></p>
                 <p>Pass&nbsp; : <input type ="password" name="pass" /></p>
                 <p><input type="button" onclick="goBackSite();" value="Retour" />

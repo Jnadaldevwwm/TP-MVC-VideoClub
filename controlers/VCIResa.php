@@ -1,8 +1,8 @@
 <?php
-    require_once 'views/vueResa.php';
-    require_once 'models/video.php';
-
     function resa(){
+        require_once 'views/vueResa.php';
+        require_once 'models/video.php';
+
         $user = 'utilweb';
         $password = 'utilweb';
 

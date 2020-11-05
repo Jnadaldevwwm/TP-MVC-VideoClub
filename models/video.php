@@ -67,5 +67,56 @@ class VideoDAO{
 
         return $data;
     }
+
+    public static function ExisteAdherent($user,$password,$dataResa){
+        $mysqlPDO = VideoDAO::ConnectVideo($user, $password);
+
+        $sql = 'SELECT * FROM adherent WHERE NUM_ADHERENT=? AND NOM_ADHERENT=?';
+
+        $res = $mysqlPDO->prepare($sql);
+        $res->execute(array($dataResa['numadherent'],$dataResa['nom']));
+
+        $data = $res->fetchAll();
+
+        $nombre = count($data);
+
+        $res->closeCursor();
+        VideoDAO::DisconnectVideo($mysqlPDO);
+
+        return ($nombre != 0);
+    }
+
+    public static function ExisteResaPourCeClient($user,$password,$dataResa){
+        $mysqlPDO = VideoDAO::ConnectVideo($user,$password);
+
+        $sql = 'SELECT * FROM location WHERE NUM_ADHERENT = ? AND ID_FILM = ? AND DEBUT_LOCATION = ?';
+
+        $res = $mysqlPDO->prepare($sql);
+        $res->execute(array($dataResa['numadherent'],$dataResa['codfil'],$dataResa['libcejour']));
+
+        $data = $res->fetchAll();
+
+        $nombre = count($data);
+        $res->closeCursor();
+        VideoDAO::DisconnectVideo($mysqlPDO);
+
+        return ($nombre != 0);
+    }
+
+    public static function InsereResa($user,$password,$dataResa){
+        $mysqlPDO = VideoDAO::ConnectVideo($user,$password);
+
+        $sql = "insert into location (NUM_ADHERENT, ID_FILM,CODE_SUPPORT, DEBUT_LOCATION) values(:numadherent ,:codfil ,\"D\",:libcejour)";
+
+        $res = $mysqlPDO-> prepare($sql);
+
+        $res->execute(array(':numadherent' =>$dataResa["numadherent"],':codfil'=> $dataResa["codfil"],':libcejour' =>$dataResa["libcejour"]));
+
+
+        $nombre = $res->rowCount();
+
+        $res->closeCursor();
+        VideoDAO::DisconnectVideo($mysqlPDO);
+    }
 }
 ?>
