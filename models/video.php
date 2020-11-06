@@ -134,5 +134,25 @@ class VideoDAO{
 
         return $data;
     }
+
+    public static function InsereNewFilm($newFilm, $user, $password){
+        $mysqlPDO = VideoDAO::ConnectVideo($user,$password);
+        $sql = 'INSERT INTO film(ID_FILM, TITRE_FILM, ID_REALIS,
+        CODE_TYPE_FILM, ANNEE_FILM, REF_IMAGE, RESUME) VALUES (';
+
+        $sql .= $newFilm->getID_FILM().', ';
+        $sql .= $newFilm->getTITRE_FILM().', ';
+        $sql .= $newFilm->getID_REALIS().', ';
+        $sql .= $newFilm->getCODE_TYPE_FILM().', ';
+        $sql .= $newFilm->getANNEE_FILM().', ';
+        $sql .= $newFilm->getREF_IMAGE().', ';
+        $sql .= $newFilm->getRESUME().')';
+
+        $res = $mysqlPDO->prepare($sql);
+        $res->execute();
+
+        $res->closeCursor();
+        VideoDAO::DisconnectVideo($mysqlPDO);
+    }
 }
 ?>
