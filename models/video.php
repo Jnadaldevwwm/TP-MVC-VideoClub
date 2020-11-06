@@ -118,5 +118,21 @@ class VideoDAO{
         $res->closeCursor();
         VideoDAO::DisconnectVideo($mysqlPDO);
     }
+
+    public static function ListeRealisateurs($user,$password){
+        $mysqlPDO = VideoDAO::ConnectVideo($user,$password);
+
+        $sql = 'SELECT * FROM star ORDER BY NOM_STAR';
+
+        $res = $mysqlPDO->prepare($sql);
+        $res->execute();
+
+        $data = $res->fetchAll();
+
+        $res->closeCursor();
+        VideoDAO::DisconnectVideo($mysqlPDO);
+
+        return $data;
+    }
 }
 ?>

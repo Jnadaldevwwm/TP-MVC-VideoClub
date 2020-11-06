@@ -4,7 +4,6 @@
     require_once 'controlers/VCIResa2.php';
     require_once 'controlers/VCIResa3.php';
     require_once 'controlers/VCIResa4.php';
-    require_once 'controlers/VCIAdmin.php';
     
     $action = isset($_GET['action']) ? $_GET['action'] : '';
     
@@ -31,10 +30,6 @@
 
         case 'resa4':
             resa4();
-        break;
-
-        case 'admin':
-            admin();
         break;
 
         default:

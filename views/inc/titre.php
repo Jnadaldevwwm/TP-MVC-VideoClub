@@ -39,7 +39,7 @@
             </tr>
         </table>
         <div id="divLogin" class="divCache" >
-            <form name="frmlogin" action="" method="post">
+            <form name="frmlogin" action="controlers/VCIAdmin.php" method="post">
                 <input type="hidden" name="action" value="admin">
                 <p>Login : <input type ="text" name="login" /></p>
                 <p>Pass&nbsp; : <input type ="password" name="pass" /></p>
